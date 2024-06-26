@@ -1,59 +1,68 @@
 
+**！！！！Functional Requirements！！！！**
+1. Requirements;
+2. Components Architecture;
+3. Components APIs;
+4. Data Flow;
+5. Optimization(Caching, fetching, Loading, Validation)
+6. Security + Accessibility
+
 **1. Functional Requirements**
-1. **Text Input Field:**
+8. **Text Input Field:**
 	- Basic text input functionality.
 	- Rich text formatting (bold, italics, etc.).
 	- Autocomplete for @ mentions (people) and # locations (rooms).
-2. **Tagging People and Rooms:**
+9. **Tagging People and Rooms:**
 	- Display a list of people when @ is typed.
 	- Display a list of rooms when # is typed.
 	- Autocomplete suggestions for both people and rooms (with debouncing and throttling).
-3. **Clickable Tags:**
+10. **Clickable Tags:**
 	- Clicking on a person’s name shows their details (position, status).
 	- Clicking on a room name shows the number of people in that room.
-4. **Recent/Most Used Tags:**
+11. **Recent/Most Used Tags:**
 	- Display the most frequently used people and rooms at the top of the suggestions.
 
 **2. Non-Functional Requirements**
-1. **Responsiveness:**
+12. **Responsiveness:**
 	- Usable on mobile, tablet, and desktop devices.
-2. **Performance:**
+13. **Performance:**
 	- Autocomplete suggestions should appear quickly.
 	- Efficiently handle large numbers of users and rooms.
-3. **Scalability:**
+14. **Scalability:**
 	- Handle an increasing number of users and rooms without performance degradation.
-4. **Usability:**
+15. **Usability:**
 	- Intuitive and user-friendly interface.
 	- Smooth user experience.
 
 **3. Components and Their APIs Design (Props)**
-1. **TextInput:**
+16. **TextInput:**
 	- value: string - the current text in the input field.
 	- onChange: function - callback function for text change.
 	- onSubmit: function - callback function for submitting the message.
 	- placeholder: string - placeholder text.
 	- isLoading: boolean - indicates if suggestions are loading.
-2. **AutocompleteDropdown:**
+17. **AutocompleteDropdown:**
 	- suggestions: array - list of suggestions (people or rooms).
 	- onSelect: function - callback function when a suggestion is selected.
 	- highlightedIndex: number - index of the currently highlighted suggestion.
 	- onNavigate: function - callback function for keyboard navigation.
-3. **TagHighlighter:**
+18. **TagHighlighter:**
 	- text: string - the input text with tags.
 	- tags: array - list of tags to highlight.
 	- onTagClick: function - callback function when a tag is clicked.
-4. **SubmitButton:**
+19. **SubmitButton:**
 	- onClick: function - callback function for button click.
 	- disabled: boolean - indicates if the button is disabled.
-5. **PersonDetails:**
+20. **PersonDetails:**
 	- person: object - details of the person (name, position, status).
 	- onClose: function - callback function to close the details popup.
-6. **RoomDetails:**
+21. **RoomDetails:**
 	- room: object - details of the room (name, number of people).
 	- onClose: function - callback function to close the details popup.
 
-**4. Basic Diagrams**
+**4. Basic Diagrams **
 - Combine above components as a whole
+
 **5. Main Features and Algorithms**
 **Handling Tagging Features**
 1. **Triggering Autocomplete:**
@@ -211,3 +220,12 @@ By following this comprehensive design, you can create a robust and user-friendl
 	- Load suggestions as the user types, rather than all at once.
 5. **Optimized Rendering:**
 	- Use React.memo or PureComponent to prevent unnecessary re-renders.
+
+**7. Security + Accessibility**
+1. **Security:**
+	- Sanitize input to prevent XSS attacks.
+	- Use HTTPS for secure data transmission.
+	- Implement authentication and authorization for fetching suggestions.
+2. **Accessibility:**
+	- Use ARIA roles and attributes to ensure screen reader compatibility.
+	- Ensure keyboard navigation works seamlessly.
